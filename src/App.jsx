@@ -129,7 +129,6 @@ const C = {
 
 const NAVS = [
   { id: "about", label: "Chi sono" },
-  { id: "thesis", label: "Tesi" },
   ...(CONFIG.projects.length > 0 ? [{ id: "projects", label: "Progetti" }] : []),
   { id: "skills", label: "Skills" },
   { id: "education", label: "Formazione" },
@@ -289,14 +288,14 @@ export default function Portfolio() {
             </In>
             <In d={0.18}>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 48 }}>
-                <button onClick={() => go("thesis")} style={{
+                <button onClick={() => go("skills")} style={{
                   background: C.accent, color: C.bg, border: "none", borderRadius: 8,
                   padding: "12px 26px", fontFamily: C.body, fontSize: 14, fontWeight: 600,
                   cursor: "pointer", transition: "all 0.2s",
                 }}
                   onMouseEnter={e => { e.target.style.transform = "translateY(-2px)"; e.target.style.boxShadow = `0 6px 24px ${C.accent}30`; }}
                   onMouseLeave={e => { e.target.style.transform = "none"; e.target.style.boxShadow = "none"; }}
-                >Vedi il progetto</button>
+                >Le mie competenze</button>
                 <button onClick={() => go("contact")} style={{
                   background: "none", color: C.white, border: `1px solid ${C.border}`, borderRadius: 8,
                   padding: "12px 26px", fontFamily: C.body, fontSize: 14, fontWeight: 500,
@@ -359,58 +358,6 @@ export default function Portfolio() {
               </div>
             </In>
           )}
-        </Sec>
-
-        {/* ═══ THESIS ═══ */}
-        <Sec id="thesis" num="02" label="Progetto principale" title={CONFIG.thesis.title}>
-          <In>
-            <p style={{ fontSize: 15, color: C.dim, lineHeight: 1.6, margin: "-24px 0 8px", fontStyle: "italic" }}>{CONFIG.thesis.subtitle}</p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
-              <Pill accent>{CONFIG.thesis.context}</Pill>
-              <Pill>{CONFIG.thesis.advisor}</Pill>
-              <Pill>{CONFIG.thesis.institution}</Pill>
-              <Pill>{CONFIG.thesis.period}</Pill>
-            </div>
-          </In>
-
-          {/* Stats */}
-          <In d={0.06}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 14, marginBottom: 36 }}>
-              {CONFIG.thesis.stats.map((s, i) => (
-                <Card key={i} style={{ padding: "22px 16px", textAlign: "center" }}>
-                  <div style={{ fontFamily: C.display, fontSize: 32, color: C.accent, lineHeight: 1, fontWeight: 500 }}>{s.value}</div>
-                  <div style={{ fontFamily: C.mono, fontSize: 10, color: C.muted, marginTop: 8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
-                </Card>
-              ))}
-            </div>
-          </In>
-
-          {/* Terminal */}
-          <In d={0.1}>
-            <Card style={{ overflow: "hidden" }}>
-              <div style={{ padding: "14px 22px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 8 }}>
-                {["#ff5f57", "#febc2e", "#28c840"].map((c, i) => <div key={i} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-                <span style={{ fontFamily: C.mono, fontSize: 11, color: C.muted, marginLeft: 10 }}>architettura</span>
-              </div>
-              <pre style={{ fontFamily: C.mono, fontSize: 12, lineHeight: 1.8, color: C.dim, margin: 0, padding: "22px 24px", whiteSpace: "pre-wrap" }}>
-                {CONFIG.thesis.architecture}
-              </pre>
-            </Card>
-          </In>
-
-          {/* Features */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, marginTop: 24 }}>
-            {CONFIG.thesis.highlights.map((f, i) => (
-              <In key={i} d={0.12 + i * 0.04}>
-                <Card glow style={{ padding: "24px 22px", height: "100%" }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: C.white, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ color: C.accent, fontSize: 16 }}>›</span> {f.title}
-                  </div>
-                  <p style={{ fontSize: 13, lineHeight: 1.7, color: C.dim, margin: 0 }}>{f.desc}</p>
-                </Card>
-              </In>
-            ))}
-          </div>
         </Sec>
 
         {/* ═══ PROJECTS (conditional) ═══ */}
